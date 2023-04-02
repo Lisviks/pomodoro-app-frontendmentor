@@ -10,24 +10,33 @@
     <title>Frontend Mentor | Pomodoro app</title>
   </head>
   <body>
-    <!-- pomodoro
-  short break
-  long break
-
-  start 
-  pause
-  restart
-
-  Settings
-
-  Time (minutes)
-  pomodoro
-  short break
-  long break
-
-  Font
-  Color
-
-  Apply -->
+    <main>
+      <div id="app">
+        <div class="logo">
+          <img src="./assets/logo.svg" alt="pomodoro logo" />
+        </div>
+        <div class="pomodoro-break">
+          <ul>
+            <li class="pomodoro">pomodoro</li>
+            <li class="short-break">short break</li>
+            <li class="long-break">long break</li>
+          </ul>
+        </div>
+        <div class="pomodoro-timer">
+          <div>
+            <div>
+              <div class="progress-container">
+                <progress max="100" value="65">65%</progress>
+              </div>
+              <h1 class="timer">17:59</h1>
+              <p class="start-pause-btn">start</p>
+            </div>
+          </div>
+        </div>
+        <div class="settings-icon">
+          <img src="./assets/icon-settings.svg" alt="settings icon" />
+        </div>
+      </div>
+    </main>
   </body>
 </html>
