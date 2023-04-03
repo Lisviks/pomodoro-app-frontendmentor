@@ -1,0 +1,95 @@
+#app {
+  width: 32.7rem;
+  margin: 3.2rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .pomodoro-break {
+    margin-top: 4.5rem;
+    padding: 0.8rem 0.6rem;
+    background-color: #161932;
+    border-radius: 3.15rem;
+    width: 100%;
+    
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+
+      li {
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        color: #d7e0ff;
+        opacity: 0.4;
+        height: 4.8rem;
+        width: 10.52rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.active {
+          background-color: var(--main-color);
+          color: #1e213f;
+          border-radius: 2.65rem;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .pomodoro-timer {
+    height: 30rem;
+    width: 30rem;
+    margin: 4.8rem 0 7.9rem;
+    background: linear-gradient(315deg, #2E325A 0%, #0E112A 100%);
+    box-shadow: -50px -50px 100px #272C5A, 50px 50px 100px #121530;
+    border-radius: 50%;
+    padding: 1.61rem;
+
+    & > div {
+      background-color: #161932;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      padding: 0.988rem;
+
+      .timer {
+        font-weight: 700;
+        font-size: 8rem;
+        line-height: 9.9rem;
+        letter-spacing: -0.4rem;
+        color: #d7e0ff;
+        text-align: center;
+        margin-top: 7.6rem;
+      }
+
+      .start-pause-btn {
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        letter-spacing: 1.3125rem;
+        color: #d7e0ff;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 1.2rem;
+        margin-left: 1.5rem;
+      }
+    }
+
+    position: relative;
+    svg  {
+      width: 24.8rem;
+      height:24.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+      fill: none;
+      stroke: var(--main-color);
+      stroke-width: 0.8rem;
+      stroke-dasharray: 650;
+    }
+  }
+}

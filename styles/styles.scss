@@ -1,0 +1,41 @@
+@use './mobile.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@700&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: #1e213f;
+}
+
+.font-1 {
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+.font-2 {
+  font-family: 'Roboto Slab', serif;
+}
+
+.font-3 {
+  font-family: 'Space Mono', monospace;
+}
+
+.color-1 {
+  --main-color: #f87070;
+}
+
+.color-2 {
+  --main-color: #70f3f8;
+}
+
+.color-3 {
+  --main-color: #d881f8;
+}
