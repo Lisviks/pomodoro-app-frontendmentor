@@ -103,6 +103,11 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(10, 12, 28, 0.5);
+  display: none;
+
+  &.open {
+    display: flex;
+  }
 
   .modal-card {
     background-color: #fff;
@@ -306,7 +311,7 @@
       left: 50%;
       bottom: -2.65rem;
       transform: translateX(-50%);
-      
+
       button {
         height: 5.3rem;
         width: 14rem;
