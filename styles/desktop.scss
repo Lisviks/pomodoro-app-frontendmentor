@@ -1,0 +1,22 @@
+@media(min-width: 768px) {
+  #app {
+    margin: 4.8rem auto 0;
+  
+    .pomodoro-timer {
+      margin: 4.5rem 0 6.3rem;
+    }
+  }
+  
+  .settings-modal {  
+    .modal-card {
+      .time-settings {  
+        ul {
+          margin-top: 2.2rem;  
+          li label {
+            margin-bottom: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
