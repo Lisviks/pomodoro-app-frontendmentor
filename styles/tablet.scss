@@ -44,14 +44,9 @@
         }
       }
 
-      // FIX with typescript
-      svg  {
-        width: 33.9rem;
-        height:33.9rem;
-        top: 50%;
-        left: 50%;
-        stroke-width: 1rem;
-        stroke-dasharray: 650;
+      .circular-chart {
+        width: 36.1rem;
+        height: 36.1rem;
       }
     }
   }
