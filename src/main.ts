@@ -1,5 +1,7 @@
-import initSettings from './settings';
+import Settings from './settings';
 import toggleModal from './toggleModal';
 
-initSettings();
+const settings = new Settings();
+settings.init();
+
 toggleModal();
