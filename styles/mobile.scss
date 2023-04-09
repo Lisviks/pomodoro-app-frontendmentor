@@ -40,21 +40,25 @@
   }
 
   .pomodoro-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30rem;
     width: 30rem;
     margin: 4.8rem 0 7.9rem;
     background: linear-gradient(315deg, #2E325A 0%, #0E112A 100%);
     box-shadow: -50px -50px 100px #272C5A, 50px 50px 100px #121530;
     border-radius: 50%;
-    padding: 1.61rem;
     position: relative;
 
     & > div {
       background-color: #161932;
-      height: 100%;
-      width: 100%;
+      height: 26.78rem;
+      width: 26.78rem;
       border-radius: 50%;
-      padding: 0.988rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       .timer {
         font-weight: 700;
@@ -63,7 +67,6 @@
         letter-spacing: -0.4rem;
         color: #d7e0ff;
         text-align: center;
-        margin-top: 7.6rem;
       }
 
       .start-pause-btn {
