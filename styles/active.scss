@@ -1,0 +1,39 @@
+.pomodoro-break li:hover {
+  cursor: pointer;
+  opacity: 1 !important;
+}
+
+.pomodoro-timer .start-pause-btn:hover {
+  cursor: pointer;
+  color: var(--main-color) !important;
+}
+
+.settings-icon:hover {
+  opacity: 1 !important;
+}
+
+.settings-modal:hover {
+  cursor: pointer;
+
+  .modal-card:hover {
+    cursor: auto;
+
+    .close-btn:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    input:hover {
+      cursor: pointer;
+    }
+
+    .arrow-up:hover, .arrow-down:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    li:hover {
+      cursor: pointer;
+    }
+  }
+}
