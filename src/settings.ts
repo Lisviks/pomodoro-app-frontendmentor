@@ -56,6 +56,8 @@ class Settings {
     pomodoroInput.value = String(this.time.pomodoro);
     shortBreakInput.value = String(this.time.shortBreak);
     longBreakInput.value = String(this.time.longBreak);
+
+    this.initTimeInputEventListeners();
   };
 
   private modalFontInit = () => {
@@ -107,6 +109,16 @@ class Settings {
       const colorNumber = element.className.split(/[-\s]/)[1];
       this.color = +colorNumber;
     });
+  }
+
+  private initTimeInputEventListeners() {
+    const pomodoro = elements().pomodoroInput;
+    const shortBreak = elements().shortBreakInput;
+    const longBreak = elements().longBreakInput;
+
+    pomodoro.addEventListener('change', () => (this.time.pomodoro = +pomodoro.value));
+    shortBreak.addEventListener('change', () => (this.time.shortBreak = +shortBreak.value));
+    longBreak.addEventListener('change', () => (this.time.longBreak = +longBreak.value));
   }
 
   private applySettings() {
