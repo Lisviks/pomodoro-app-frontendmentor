@@ -21,17 +21,31 @@ const timer = () => {
   let ellapsedTime = 0;
   let timeLeft = pomodoro * 60;
 
-  const countdown = setInterval(() => {
-    timeLeft--;
-    ellapsedTime++;
-    const formattedTime = formatTime(timeLeft);
-    displayTime(formattedTime);
-    console.log(timeLeft);
-    if (timeLeft === 0) {
-      clearInterval(countdown);
-      console.log('DONE');
+  let countdown: any;
+
+  const startPauseBtn = document.querySelector('.start-pause-btn') as HTMLParagraphElement;
+
+  startPauseBtn.addEventListener('click', () => {
+    let countdownState = startPauseBtn.innerText.toLowerCase();
+
+    if (countdownState === 'start') {
+      startPauseBtn.innerText = 'pause';
+      countdown = setInterval(() => {
+        timeLeft--;
+        ellapsedTime++;
+        const formattedTime = formatTime(timeLeft);
+        displayTime(formattedTime);
+
+        if (timeLeft === 0) {
+          clearInterval(countdown);
+        }
+      }, 1000);
+    } else if (countdownState === 'pause') {
+      // continue pomodoro
+    } else if (countdownState === 'restart') {
+      // restart pomodor
     }
-  }, 1000);
+  });
 };
 
 export default timer;
