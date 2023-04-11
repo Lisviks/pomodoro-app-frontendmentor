@@ -18,7 +18,7 @@ class Settings {
   font: number = 1;
   color: number = 1;
 
-  init() {
+  constructor() {
     const settingsLS = localStorage.getItem('FEM-Pomodoro-Settings');
     if (settingsLS) {
       const settings = JSON.parse(settingsLS);
@@ -29,7 +29,9 @@ class Settings {
     } else {
       this.saveSettingsToLS();
     }
+  }
 
+  init() {
     elements().applyButton.addEventListener('click', () => {
       this.saveSettingsToLS();
       this.applySettings();
