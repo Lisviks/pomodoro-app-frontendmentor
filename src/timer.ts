@@ -38,13 +38,26 @@ const timer = () => {
 
         if (timeLeft === 0) {
           clearInterval(countdown);
+          startPauseBtn.innerText = 'restart';
         }
       }, 1000);
     } else if (countdownState === 'pause') {
       clearInterval(countdown);
       startPauseBtn.innerText = 'start';
     } else if (countdownState === 'restart') {
-      // restart pomodor
+      timeLeft = pomodoro * 60;
+      startPauseBtn.innerText = 'pause';
+      countdown = setInterval(() => {
+        timeLeft--;
+        ellapsedTime++;
+        const formattedTime = formatTime(timeLeft);
+        displayTime(formattedTime);
+
+        if (timeLeft === 0) {
+          clearInterval(countdown);
+          startPauseBtn.innerText = 'restart';
+        }
+      }, 1000);
     }
   });
 };
