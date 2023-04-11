@@ -41,7 +41,8 @@ const timer = () => {
         }
       }, 1000);
     } else if (countdownState === 'pause') {
-      // continue pomodoro
+      clearInterval(countdown);
+      startPauseBtn.innerText = 'start';
     } else if (countdownState === 'restart') {
       // restart pomodor
     }
