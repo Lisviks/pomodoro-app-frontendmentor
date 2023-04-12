@@ -52,6 +52,10 @@ class Settings {
     localStorage.setItem('FEM-Pomodoro-Settings', JSON.stringify(settings));
   }
 
+  getTime() {
+    return this.time;
+  }
+
   private modalTimeInputsInit = () => {
     const { pomodoroInput, shortBreakInput, longBreakInput } = elements();
 

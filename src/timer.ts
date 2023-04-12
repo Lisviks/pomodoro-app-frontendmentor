@@ -1,65 +1,84 @@
 import Settings from './settings';
 
-const timeSettings = new Settings().time;
+class Pomodoro {
+  pomodoro: number;
+  shortBreak: number;
+  longBreak: number;
+  timeLeft: number;
+  startPauseBtn = document.querySelector('.start-pause-btn') as HTMLParagraphElement;
+  interval: any;
 
-const formatTime = (time: number): string => {
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60 < 10 ? `0${time % 60}` : time % 60;
+  constructor() {
+    const { pomodoro, shortBreak, longBreak } = new Settings().time;
 
-  return `${minutes}:${seconds}`;
-};
+    this.pomodoro = pomodoro;
+    this.shortBreak = shortBreak;
+    this.longBreak = longBreak;
+    this.timeLeft = pomodoro * 60;
+  }
 
-const displayTime = (time: string) => {
-  const timerElement = document.querySelector('.pomodoro-timer .timer') as HTMLHeadingElement;
+  init() {
+    console.log(this.pomodoro);
+    console.log(this.shortBreak);
+    console.log(this.longBreak);
+    this.startPauseBtn.addEventListener('click', () => {
+      let countdownState = this.startPauseBtn.innerText.toLowerCase();
 
-  timerElement.innerText = time;
-};
+      if (countdownState === 'start') {
+        this.startTimer();
+      } else if (countdownState === 'pause') {
+        this.pauseTimer();
+      } else if (countdownState === 'restart') {
+        this.restartTimer();
+      }
+    });
+  }
 
-const timer = () => {
-  const { pomodoro, shortBreak, longBreak } = timeSettings;
+  formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60 < 10 ? `0${time % 60}` : time % 60;
 
-  let ellapsedTime = 0;
-  let timeLeft = pomodoro * 60;
+    return `${minutes}:${seconds}`;
+  };
 
-  let countdown: any;
+  displayTime = (time: string) => {
+    const timerElement = document.querySelector('.pomodoro-timer .timer') as HTMLHeadingElement;
 
-  const startPauseBtn = document.querySelector('.start-pause-btn') as HTMLParagraphElement;
+    timerElement.innerText = time;
+  };
 
-  startPauseBtn.addEventListener('click', () => {
-    let countdownState = startPauseBtn.innerText.toLowerCase();
+  startTimer() {
+    this.startPauseBtn.innerText = 'pause';
+    this.interval = setInterval(() => {
+      this.countdown();
+      const formattedTime = this.formatTime(this.timeLeft);
+      this.displayTime(formattedTime);
+    }, 1000);
+  }
 
-    if (countdownState === 'start') {
-      startPauseBtn.innerText = 'pause';
-      countdown = setInterval(() => {
-        timeLeft--;
-        ellapsedTime++;
-        const formattedTime = formatTime(timeLeft);
-        displayTime(formattedTime);
+  pauseTimer() {
+    clearInterval(this.interval);
+    this.startPauseBtn.innerText = 'start';
+  }
 
-        if (timeLeft === 0) {
-          clearInterval(countdown);
-          startPauseBtn.innerText = 'restart';
-        }
-      }, 1000);
-    } else if (countdownState === 'pause') {
-      clearInterval(countdown);
-      startPauseBtn.innerText = 'start';
-    } else if (countdownState === 'restart') {
-      timeLeft = pomodoro * 60;
-      startPauseBtn.innerText = 'pause';
-      countdown = setInterval(() => {
-        timeLeft--;
-        ellapsedTime++;
-        const formattedTime = formatTime(timeLeft);
-        displayTime(formattedTime);
+  restartTimer() {
+    this.timeLeft = new Settings().getTime().pomodoro * 60;
+    this.startPauseBtn.innerText = 'pause';
+    this.interval = setInterval(() => {
+      this.countdown();
+      const formattedTime = this.formatTime(this.timeLeft);
+      this.displayTime(formattedTime);
+    }, 1000);
+  }
 
-        if (timeLeft === 0) {
-          clearInterval(countdown);
-          startPauseBtn.innerText = 'restart';
-        }
-      }, 1000);
+  countdown() {
+    this.timeLeft--;
+
+    if (this.timeLeft === 0) {
+      clearInterval(this.interval);
+      this.startPauseBtn.innerText = 'restart';
     }
-  });
-};
+  }
+}
 
-export default timer;
+export default Pomodoro;
