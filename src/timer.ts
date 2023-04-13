@@ -103,6 +103,7 @@ class Pomodoro {
     this.timeLeft = this.pomodoro * 60;
     this.elapsedTime = 0;
     this.currentTimer = 'pomodoro';
+    this.switchBreakBtnStyle();
     this.startPauseBtn.innerText = 'pause';
     this.interval = setInterval(() => this.countdown(), 1000);
   }
@@ -115,6 +116,7 @@ class Pomodoro {
     this.timeLeft = this.shortBreak * 60;
     this.elapsedTime = 0;
     this.currentTimer = 'shortBreak';
+    this.switchBreakBtnStyle();
     this.startPauseBtn.innerText = 'pause';
     this.interval = setInterval(() => this.countdown(), 1000);
   }
@@ -127,8 +129,23 @@ class Pomodoro {
     this.timeLeft = this.longBreak * 60;
     this.elapsedTime = 0;
     this.currentTimer = 'longBreak';
+    this.switchBreakBtnStyle();
     this.startPauseBtn.innerText = 'pause';
     this.interval = setInterval(() => this.countdown(), 1000);
+  }
+
+  switchBreakBtnStyle() {
+    this.pomodoroBtn.classList.remove('active');
+    this.shortBreakBtn.classList.remove('active');
+    this.longBreakBtn.classList.remove('active');
+
+    if (this.currentTimer === 'pomodoro') {
+      this.pomodoroBtn.classList.add('active');
+    } else if (this.currentTimer === 'shortBreak') {
+      this.shortBreakBtn.classList.add('active');
+    } else if (this.currentTimer === 'longBreak') {
+      this.longBreakBtn.classList.add('active');
+    }
   }
 }
 
