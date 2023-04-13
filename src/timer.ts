@@ -18,9 +18,6 @@ class Pomodoro {
   }
 
   init() {
-    console.log(this.pomodoro);
-    console.log(this.shortBreak);
-    console.log(this.longBreak);
     this.startPauseBtn.addEventListener('click', () => {
       let countdownState = this.startPauseBtn.innerText.toLowerCase();
 
@@ -49,11 +46,7 @@ class Pomodoro {
 
   startTimer() {
     this.startPauseBtn.innerText = 'pause';
-    this.interval = setInterval(() => {
-      this.countdown();
-      const formattedTime = this.formatTime(this.timeLeft);
-      this.displayTime(formattedTime);
-    }, 1000);
+    this.interval = setInterval(() => this.countdown(), 1000);
   }
 
   pauseTimer() {
@@ -64,15 +57,13 @@ class Pomodoro {
   restartTimer() {
     this.timeLeft = new Settings().getTime().pomodoro * 60;
     this.startPauseBtn.innerText = 'pause';
-    this.interval = setInterval(() => {
-      this.countdown();
-      const formattedTime = this.formatTime(this.timeLeft);
-      this.displayTime(formattedTime);
-    }, 1000);
+    this.interval = setInterval(() => this.countdown(), 1000);
   }
 
   countdown() {
     this.timeLeft--;
+    const formattedTime = this.formatTime(this.timeLeft);
+    this.displayTime(formattedTime);
 
     if (this.timeLeft === 0) {
       clearInterval(this.interval);
