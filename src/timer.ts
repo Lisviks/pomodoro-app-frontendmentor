@@ -5,6 +5,7 @@ class Pomodoro {
   shortBreak: number;
   longBreak: number;
   timeLeft: number;
+  elapsedTime: number = 0;
   startPauseBtn = document.querySelector('.start-pause-btn') as HTMLParagraphElement;
   interval: any;
 
@@ -62,13 +63,24 @@ class Pomodoro {
 
   countdown() {
     this.timeLeft--;
+    this.elapsedTime++;
     const formattedTime = this.formatTime(this.timeLeft);
     this.displayTime(formattedTime);
+    this.progressBar();
 
     if (this.timeLeft === 0) {
       clearInterval(this.interval);
       this.startPauseBtn.innerText = 'restart';
     }
+  }
+
+  progressBar() {
+    type SvgInHtml = HTMLElement & SVGAElement;
+    const progressBar = document.querySelector('.circular-chart') as SvgInHtml;
+
+    const elapsedTimePercentage = ((this.elapsedTime / (this.pomodoro * 60)) * 100).toFixed();
+
+    progressBar.style.strokeDasharray = `${elapsedTimePercentage} 100`;
   }
 }
 
