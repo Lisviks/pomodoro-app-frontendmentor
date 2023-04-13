@@ -23,6 +23,8 @@ class Pomodoro {
   }
 
   init() {
+    this.displayTime(this.formatTime(this.pomodoro * 60));
+
     this.startPauseBtn.addEventListener('click', () => {
       let countdownState = this.startPauseBtn.innerText.toLowerCase();
       if (countdownState === 'start') {
