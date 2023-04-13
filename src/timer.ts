@@ -12,6 +12,7 @@ class Pomodoro {
   longBreakBtn = document.querySelector('.pomodoro-break .long-break') as HTMLLIElement;
   currentTimer = 'pomodoro';
   interval: any;
+  breakNum = 0;
 
   constructor() {
     const { pomodoro, shortBreak, longBreak } = new Settings().time;
@@ -80,6 +81,7 @@ class Pomodoro {
     if (this.timeLeft === 0) {
       clearInterval(this.interval);
       this.startPauseBtn.innerText = 'restart';
+      this.switchTimerOnComplete();
     }
   }
 
@@ -147,6 +149,21 @@ class Pomodoro {
       this.shortBreakBtn.classList.add('active');
     } else if (this.currentTimer === 'longBreak') {
       this.longBreakBtn.classList.add('active');
+    }
+  }
+
+  switchTimerOnComplete() {
+    if (this.currentTimer === 'shortBreak' || this.currentTimer === 'longBreak') {
+      console.log('start pomodoro');
+      this.startPomodoro();
+    } else if (this.currentTimer === 'pomodoro' && this.breakNum <= 1) {
+      console.log('short break');
+      this.breakNum++;
+      this.startShortBreak();
+    } else if (this.currentTimer === 'pomodoro' && this.breakNum >= 2) {
+      console.log('long break');
+      this.breakNum = 0;
+      this.startLongBreak();
     }
   }
 }
