@@ -213,6 +213,63 @@
           }
         }
       }
+
+      .auto-break {
+        margin-top: 2rem;
+        position: relative;
+
+        label {
+          font-weight: 700;
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+          color: #1e213f;
+          opacity: 0.4;
+          padding-right: 1rem;
+
+          &:hover ~ .checkmark {
+            background-color: #d7e0ff;
+          }
+        }
+
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+
+          &:checked ~ .checkmark::after {
+            display: block;
+          } 
+        }
+
+        .checkmark {
+          position: absolute;
+          height: 1.7rem;
+          width: 1.7rem;
+          background-color: #eff1fa;
+          border-radius: 5px;
+
+          &:hover {
+            background-color: #d7e0ff;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid #161932;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+
+        
+      }
     }
 
     .font-settings {
