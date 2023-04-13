@@ -7,6 +7,10 @@ class Pomodoro {
   timeLeft: number;
   elapsedTime: number = 0;
   startPauseBtn = document.querySelector('.start-pause-btn') as HTMLParagraphElement;
+  pomodoroBtn = document.querySelector('.pomodoro-break .pomodoro') as HTMLLIElement;
+  shortBreakBtn = document.querySelector('.pomodoro-break .short-break') as HTMLLIElement;
+  longBreakBtn = document.querySelector('.pomodoro-break .long-break') as HTMLLIElement;
+  currentTimer = 'pomodoro';
   interval: any;
 
   constructor() {
@@ -21,7 +25,6 @@ class Pomodoro {
   init() {
     this.startPauseBtn.addEventListener('click', () => {
       let countdownState = this.startPauseBtn.innerText.toLowerCase();
-
       if (countdownState === 'start') {
         this.startTimer();
       } else if (countdownState === 'pause') {
@@ -30,6 +33,10 @@ class Pomodoro {
         this.restartTimer();
       }
     });
+
+    this.pomodoroBtn.addEventListener('click', () => this.startPomodoro());
+    this.shortBreakBtn.addEventListener('click', () => this.startShortBreak());
+    this.longBreakBtn.addEventListener('click', () => this.startLongBreak());
   }
 
   formatTime = (time: number) => {
@@ -78,9 +85,50 @@ class Pomodoro {
     type SvgInHtml = HTMLElement & SVGAElement;
     const progressBar = document.querySelector('.circular-chart') as SvgInHtml;
 
-    const elapsedTimePercentage = ((this.elapsedTime / (this.pomodoro * 60)) * 100).toFixed();
+    let timeToUse: number = this.pomodoro;
+    if (this.currentTimer === 'pomodoro') timeToUse = this.pomodoro;
+    if (this.currentTimer === 'shortBreak') timeToUse = this.shortBreak;
+    if (this.currentTimer === 'longBreak') timeToUse = this.longBreak;
+
+    const elapsedTimePercentage = ((this.elapsedTime / (timeToUse * 60)) * 100).toFixed();
 
     progressBar.style.strokeDasharray = `${elapsedTimePercentage} 100`;
+  }
+
+  startPomodoro() {
+    if (this.currentTimer === 'pomodoro' && this.interval) {
+      return;
+    }
+    clearInterval(this.interval);
+    this.timeLeft = this.pomodoro * 60;
+    this.elapsedTime = 0;
+    this.currentTimer = 'pomodoro';
+    this.startPauseBtn.innerText = 'pause';
+    this.interval = setInterval(() => this.countdown(), 1000);
+  }
+
+  startShortBreak() {
+    if (this.currentTimer === 'shortBreak' && this.interval) {
+      return;
+    }
+    clearInterval(this.interval);
+    this.timeLeft = this.shortBreak * 60;
+    this.elapsedTime = 0;
+    this.currentTimer = 'shortBreak';
+    this.startPauseBtn.innerText = 'pause';
+    this.interval = setInterval(() => this.countdown(), 1000);
+  }
+
+  startLongBreak() {
+    if (this.currentTimer === 'longBreak' && this.interval) {
+      return;
+    }
+    clearInterval(this.interval);
+    this.timeLeft = this.longBreak * 60;
+    this.elapsedTime = 0;
+    this.currentTimer = 'longBreak';
+    this.startPauseBtn.innerText = 'pause';
+    this.interval = setInterval(() => this.countdown(), 1000);
   }
 }
 
