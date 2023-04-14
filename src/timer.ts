@@ -4,6 +4,7 @@ class Pomodoro {
   pomodoro: number;
   shortBreak: number;
   longBreak: number;
+  autoBreak: boolean;
   timeLeft: number;
   elapsedTime: number = 0;
   startPauseBtn = document.querySelector('.start-pause-btn') as HTMLParagraphElement;
@@ -15,11 +16,12 @@ class Pomodoro {
   breakNum = 0;
 
   constructor() {
-    const { pomodoro, shortBreak, longBreak } = new Settings().time;
+    const { pomodoro, shortBreak, longBreak, autoBreak } = new Settings().time;
 
     this.pomodoro = pomodoro;
     this.shortBreak = shortBreak;
     this.longBreak = longBreak;
+    this.autoBreak = autoBreak;
     this.timeLeft = pomodoro * 60;
   }
 
@@ -153,6 +155,8 @@ class Pomodoro {
   }
 
   switchTimerOnComplete() {
+    if (!this.autoBreak) return;
+
     if (this.currentTimer === 'shortBreak' || this.currentTimer === 'longBreak') {
       this.startPomodoro();
     } else if (this.currentTimer === 'pomodoro' && this.breakNum <= 1) {

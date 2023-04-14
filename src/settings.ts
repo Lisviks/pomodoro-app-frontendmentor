@@ -125,6 +125,8 @@ class Settings {
     const longBreak = elements().longBreakInput;
     const autoBreakInput = elements().autoBreakInput;
 
+    autoBreakInput.checked = this.time.autoBreak;
+
     pomodoro.addEventListener('change', () => (this.time.pomodoro = +pomodoro.value));
     shortBreak.addEventListener('change', () => (this.time.shortBreak = +shortBreak.value));
     longBreak.addEventListener('change', () => (this.time.longBreak = +longBreak.value));
