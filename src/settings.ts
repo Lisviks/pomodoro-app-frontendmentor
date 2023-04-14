@@ -2,19 +2,21 @@ interface TimeSettings {
   pomodoro: number;
   shortBreak: number;
   longBreak: number;
+  autoBreak: boolean;
 }
 
 interface SettingsHTMLElements {
   pomodoroInput: HTMLInputElement;
   shortBreakInput: HTMLInputElement;
   longBreakInput: HTMLInputElement;
+  autoBreakInput: HTMLInputElement;
   allFontElements: NodeListOf<HTMLLIElement>;
   allColorElements: NodeListOf<HTMLLIElement>;
   applyButton: HTMLButtonElement;
 }
 
 class Settings {
-  time: TimeSettings = { pomodoro: 25, shortBreak: 5, longBreak: 15 };
+  time: TimeSettings = { pomodoro: 25, shortBreak: 5, longBreak: 15, autoBreak: false };
   font: number = 1;
   color: number = 1;
 
@@ -121,10 +123,12 @@ class Settings {
     const pomodoro = elements().pomodoroInput;
     const shortBreak = elements().shortBreakInput;
     const longBreak = elements().longBreakInput;
+    const autoBreakInput = elements().autoBreakInput;
 
     pomodoro.addEventListener('change', () => (this.time.pomodoro = +pomodoro.value));
     shortBreak.addEventListener('change', () => (this.time.shortBreak = +shortBreak.value));
     longBreak.addEventListener('change', () => (this.time.longBreak = +longBreak.value));
+    autoBreakInput.addEventListener('change', () => (this.time.autoBreak = !this.time.autoBreak));
   }
 
   private applySettings() {
@@ -138,6 +142,7 @@ const elements = (): SettingsHTMLElements => {
   const pomodoroInput = document.querySelector('.pomodoro-input') as HTMLInputElement;
   const shortBreakInput = document.querySelector('.short-break-input') as HTMLInputElement;
   const longBreakInput = document.querySelector('.long-break-input') as HTMLInputElement;
+  const autoBreakInput = document.querySelector('.auto-break-input') as HTMLInputElement;
   const allFontElements = document.querySelectorAll('.font-settings li') as NodeListOf<HTMLLIElement>;
   const allColorElements = document.querySelectorAll('.color-settings li') as NodeListOf<HTMLLIElement>;
   const applyButton = document.querySelector('.apply-settings-btn') as HTMLButtonElement;
@@ -149,6 +154,7 @@ const elements = (): SettingsHTMLElements => {
     allFontElements,
     allColorElements,
     applyButton,
+    autoBreakInput,
   };
 };
 
