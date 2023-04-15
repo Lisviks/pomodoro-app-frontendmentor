@@ -58,6 +58,7 @@ class Pomodoro {
   };
 
   startTimer() {
+    this.checkUpdatedSettings();
     this.startPauseBtn.innerText = 'pause';
     this.interval = setInterval(() => this.countdown(), 1000);
   }
@@ -71,6 +72,27 @@ class Pomodoro {
     this.timeLeft = new Settings().getTime().pomodoro * 60;
     this.startPauseBtn.innerText = 'pause';
     this.interval = setInterval(() => this.countdown(), 1000);
+  }
+
+  checkUpdatedSettings() {
+    const timeSettings = new Settings().time;
+
+    if (timeSettings.pomodoro !== this.pomodoro && this.currentTimer === 'pomodoro') {
+      this.pomodoro = timeSettings.pomodoro;
+      this.timeLeft = timeSettings.pomodoro * 60;
+      this.elapsedTime = 0;
+      clearInterval(this.interval);
+    } else if (timeSettings.shortBreak !== this.shortBreak && this.currentTimer === 'shortBreak') {
+      this.shortBreak = timeSettings.shortBreak;
+      this.timeLeft = timeSettings.shortBreak * 60;
+      this.elapsedTime = 0;
+      clearInterval(this.interval);
+    } else if (timeSettings.longBreak !== this.longBreak && this.currentTimer === 'longBreak') {
+      this.shortBreak = timeSettings.shortBreak;
+      this.timeLeft = timeSettings.longBreak * 60;
+      this.elapsedTime = 0;
+      clearInterval(this.interval);
+    }
   }
 
   countdown() {
