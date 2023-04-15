@@ -106,7 +106,7 @@ class Pomodoro {
       return;
     }
     clearInterval(this.interval);
-    this.timeLeft = this.pomodoro * 60;
+    this.timeLeft = new Settings().time.pomodoro * 60;
     this.elapsedTime = 0;
     this.currentTimer = 'pomodoro';
     this.switchBreakBtnStyle();
@@ -119,7 +119,7 @@ class Pomodoro {
       return;
     }
     clearInterval(this.interval);
-    this.timeLeft = this.shortBreak * 60;
+    this.timeLeft = new Settings().time.shortBreak * 60;
     this.elapsedTime = 0;
     this.currentTimer = 'shortBreak';
     this.switchBreakBtnStyle();
@@ -132,7 +132,7 @@ class Pomodoro {
       return;
     }
     clearInterval(this.interval);
-    this.timeLeft = this.longBreak * 60;
+    this.timeLeft = new Settings().time.longBreak * 60;
     this.elapsedTime = 0;
     this.currentTimer = 'longBreak';
     this.switchBreakBtnStyle();
@@ -155,6 +155,7 @@ class Pomodoro {
   }
 
   switchTimerOnComplete() {
+    this.autoBreak = new Settings().time.autoBreak;
     if (!this.autoBreak) return;
 
     if (this.currentTimer === 'shortBreak' || this.currentTimer === 'longBreak') {
