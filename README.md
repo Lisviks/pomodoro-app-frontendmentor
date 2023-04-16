@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [URL]()
-- Live Site URL: [URL]()
+- Solution URL: [URL](https://www.frontendmentor.io/solutions/pomodoro-app-DLEUDjXW-I)
+- Live Site URL: [URL](https://lisviks.github.io/pomodoro-app-frontendmentor/)
 
 ## My process
 
@@ -49,6 +49,7 @@ Users should be able to:
 
 - [Custom Checkbox](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_checkbox)
 - [Circular Progress Bar](https://codepen.io/sergiopedercini/pen/aWawra)
+- [Vite Deploy to GitHub Pages](https://github.com/sitek94/vite-deploy-demo)
 
 ## Author
 
