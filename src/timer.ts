@@ -70,6 +70,7 @@ class Pomodoro {
 
   restartTimer() {
     this.timeLeft = new Settings().getTime().pomodoro * 60;
+    this.elapsedTime = 0;
     this.startPauseBtn.innerText = 'pause';
     this.interval = setInterval(() => this.countdown(), 1000);
   }
