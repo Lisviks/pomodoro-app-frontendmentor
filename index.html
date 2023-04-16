@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+    
+
+    
+
+    <title>Frontend Mentor | Pomodoro app</title>
+    <script type="module" crossorigin src="/assets/index-2a261a48.js"></script>
+    <link rel="stylesheet" href="/assets/index-b5823316.css">
+  </head>
+  <body class="font-1 color-1">
+    <main>
+      <div id="app">
+        <div class="logo">
+          <img src="./assets/logo.svg" alt="pomodoro logo" />
+        </div>
+        <div class="pomodoro-break">
+          <ul>
+            <li class="pomodoro active">pomodoro</li>
+            <li class="short-break">short break</li>
+            <li class="long-break">long break</li>
+          </ul>
+        </div>
+        <div class="pomodoro-timer">
+          <div>
+            <h1 class="timer">00:00</h1>
+            <p class="start-pause-btn">start</p>
+          </div>
+          <svg viewBox="0 0 36 36" class="circular-chart">
+            <path
+              class="circle"
+              d="M18 2.0845
+        a 15.9155 15.9155 0 0 1 0 31.831
+        a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+          </svg>
+        </div>
+        <div class="settings-icon">
+          <img src="./assets/icon-settings.svg" alt="settings icon" />
+        </div>
+        <div class="settings-modal">
+          <div class="modal-card">
+            <div class="header">
+              <h3>Settings</h3>
+              <div class="close-btn">
+                <img src="./assets/icon-close.svg" alt="close icon" />
+              </div>
+            </div>
+            <div class="time-settings">
+              <h4>Time (minutes)</h4>
+              <ul>
+                <li>
+                  <label for="pomodoro">pomodoro</label>
+                  <div class="input-field">
+                    <input type="text" name="pomodoro" id="pomodoro" class="pomodoro-input" />
+                    <img src="./assets/icon-arrow-up.svg" alt="arrow up" class="arrow-up" />
+                    <img src="./assets/icon-arrow-down.svg" alt="arrow down" class="arrow-down" />
+                  </div>
+                </li>
+                <li>
+                  <label for="short-break">short-break</label>
+                  <div class="input-field">
+                    <input type="text" name="short-break" id="short-break" class="short-break-input" />
+                    <img src="./assets/icon-arrow-up.svg" alt="arrow up" class="arrow-up" />
+                    <img src="./assets/icon-arrow-down.svg" alt="arrow down" class="arrow-down" />
+                  </div>
+                </li>
+                <li>
+                  <label for="long-break">long-break</label>
+                  <div class="input-field">
+                    <input type="text" name="long-break" id="long-break" class="long-break-input" />
+                    <img src="./assets/icon-arrow-up.svg" alt="arrow up" class="arrow-up" />
+                    <img src="./assets/icon-arrow-down.svg" alt="arrow down" class="arrow-down" />
+                  </div>
+                </li>
+              </ul>
+              <div class="auto-break">
+                <label for="auto-break">Auto break</label>
+                <input type="checkbox" name="auto-break" id="auto-break" class="auto-break-input" />
+                <span class="checkmark"></span>
+              </div>
+            </div>
+            <div class="font-settings">
+              <h4>Font</h4>
+              <ul>
+                <li class="font-1 active">Aa</li>
+                <li class="font-2">Aa</li>
+                <li class="font-3">Aa</li>
+              </ul>
+            </div>
+            <div class="color-settings">
+              <h4>Color</h4>
+              <ul>
+                <li class="color-1 active"></li>
+                <li class="color-2"></li>
+                <li class="color-3"></li>
+              </ul>
+            </div>
+            <div class="apply-settings">
+              <button class="apply-settings-btn">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
